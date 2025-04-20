@@ -1,12 +1,16 @@
 name: Generate Repository Documentation
 
 on:
+  # Automatically trigger on any push to any branch
   push:
     branches:
-      - master
+      - main  # All branches
+
+  # Allow manual trigger from GitHub Actions tab
+  workflow_dispatch:
 
 permissions:
-  contents: write  # Allows pushing generated documentation
+  contents: write  # Allows pushing changes to the repo
 
 jobs:
   generate-docs:
@@ -38,7 +42,5 @@ jobs:
           git add DOCUMENTATION.md
           git commit -m "📝 Auto-generated documentation using doc-keeper" || echo "No changes to commit"
 
-          # Ensure latest version of repo to prevent push errors
-          git pull --rebase --strategy-option=theirs origin master || echo "Merge issue ignored"
-
-          git push origin master --force
+          git pull --rebase --strategy-option=theirs origin $(git rev-parse --abbrev-ref HEAD) || echo "Merge issue ignored"
+          git push origin $(git rev-parse --abbrev-ref HEAD) --force

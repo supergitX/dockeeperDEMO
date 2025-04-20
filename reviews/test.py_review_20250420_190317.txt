@@ -1,0 +1,11 @@
+The given code is almost perfect. The only thing that can be improved in this context would be adding error handling around division, as it could potentially occur with very large numbers due to integer overflows or precision issues (Python uses long integers by default and if we try doing a modulo operation over 2 for such high values then the result will also exceed maximum limit).
+
+Here're some improvements:
+- Use `math.sqrt` instead of exponentiation operator in Python, because it reduces rounding errors due to floating point arithmetic (similar with division but not exactly identical) and increases performance by avoiding unnecessary recursive calls which could slow down program if the input number is very large or negative etc. 2^10 > 7 * sqrt(9), so we don't need an upper limit of `int((n**0.5)) + 1`
+- Include error handling for non integers, float numbers and other edge cases (negative ones in this case) to ensure robustness against these types of input data that the function may encounter — you could use a try/except block here if necessary but it depends on how your code is being used. For example:
+```python
+def check_prime(n):
+    """Check for prime number"""    
+   # Check n type first, then only proceed otherwise print error message and exit program 
+	if not (isinstance(n , int) or isinstance(n , float)) :	      			        		     	 	   	     									          if n<=1:    return False                                                                        try:                          check_prime = [2]                                          for i in range(3,int((math.sqrt(abs(n)))+1), 2):             
+                # If number is divisible by any other numbers then it's not a prime     if n % (i) == 0 : return False                                                                                                                     else:   print ("prime")    except Exception as e: raise ValueError("Input must be an integer or float.") from None```  This updated code will handle the cases when inputs are non-integer and negative numbers.

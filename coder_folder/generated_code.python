@@ -1,0 +1,31 @@
+def find_partitions(n):
+    """
+    Find all possible partitions of n into non-negative integers.
+    
+    Parameters:
+        - n (int): The integer to be partitioned into parts.
+        
+    Returns:
+        - list: A list of tuples, where each tuple represents a valid partition of n into non-negative integers.
+    
+    Example usage:
+    >>> find_partitions(10)
+    [(1, 9), (2, 8)]
+    """
+    partitions = []
+    for i in range(n + 1):
+        # Check if the remaining number can be split into two parts
+        if n % i == 0:
+            # Append a partition to the list with the quotient and remainder
+            partitions.append((i, n // i))
+    
+    return partitions
+
+# Example check function to verify the solution
+def check_solution():
+    assert find_partitions(10) == [(1, 9), (2, 8)], "Test case 1 failed"
+    assert find_partitions(15) == [(1, 5), (3, 4)], "Test case 2 failed"
+    assert find_partitions(1) == [], "Test case 3 failed"  # n is 0
+    print("All test cases passed!")
+
+check_solution()

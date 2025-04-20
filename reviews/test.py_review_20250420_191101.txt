@@ -1,0 +1,27 @@
+Code Review Report by supergit_reviewer:
+
+---
+
+### Review Report
+
+#### **Initial Code Review**
+The code snippet provided defines a function `check_prime` that checks if a given number is prime. It handles the basic case where `n <= 1`, which are not prime numbers. For larger numbers, it uses a loop to check divisibility from 2 up to the square root of `n`. If any divisor is found, the function returns `False`, indicating that the number is not prime.
+
+#### **Functionality Check**
+- The function checks if `n` is less than or equal to 1. Since this is always true for a prime number, this case does not cause a runtime error.
+- It then iterates up to the square root of `n`. For each `i`, it checks if `n % i == 0`. If such a divisor is found, it immediately returns `False`.
+- If no divisors are found after checking all possibilities (up to the square root), the function returns `True`.
+
+#### **Boundary Conditions Check**
+- The function should handle cases where `n` could be very large. For example, if `n` is extremely large and not a prime number, it might result in an overflow or runtime error.
+- The loop stops at the square root of `n`, as the loop will iterate only up to this value.
+
+#### **Error Handling**
+- The function does not catch any exceptions that could occur during the process. If `n` is not a prime number, an exception would be thrown and caught by the caller.
+
+#### **Conclusion**
+The function `check_prime` is efficient for checking prime numbers. However, it should be used with caution to ensure that no large number exceeds the expected range, as this could lead to overflow or runtime errors.
+
+---
+
+**End of Review Report**

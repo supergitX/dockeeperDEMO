@@ -122,8 +122,3 @@ We welcome contributions! Feel free to open issues, create PRs, or fork and buil
 
 If this project helped you, consider leaving a ⭐️ to support it!
 
-```
-
----
-
-Want to personalize it with your name, project logo, or a badge for GitHub Actions? I can help add that too.
